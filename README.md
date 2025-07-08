@@ -16,39 +16,6 @@
 
 ---
 
-## 🏗️ Architecture Overview
-
-```mermaid
-flowchart TD
-  subgraph Frontend
-    F1[User Interface]
-    F2[Google Maps Integration]
-    F3[API Requests (Axios)]
-  end
-  subgraph Backend
-    B1[REST API]
-    B2[Authentication (JWT)]
-    B3[Product & User Management]
-    B4[Location Data]
-  end
-  subgraph Database
-    D1[(Users)]
-    D2[(Products)]
-  end
-  F1 --> F2
-  F1 --> F3
-  F2 --> F3
-  F3 --> B1
-  B1 --> B2
-  B1 --> B3
-  B1 --> B4
-  B2 --> D1
-  B3 --> D2
-  B4 --> D2
-```
-
----
-
 ## 🚀 Tech Stack
 
 - **Backend:** Node.js, Express, JWT, Mongoose
