@@ -7,22 +7,22 @@ const router = express.Router();
 // Get all products (optionally filter by location)
 router.get('/', async (req, res) => {
   try {
-    const { lat, lng, radius } = req.query;
-    let products;
+    const { lat, lng, radius, populate } = req.query;
+    let query = {};
     if (lat && lng && radius) {
-      // Use MongoDB geospatial query for efficient location search
       const center = [Number(lng), Number(lat)];
-      const radiusInMeters = Number(radius) * 1000; // radius in km to meters
-      products = await Product.find({
-        location: {
-          $geoWithin: {
-            $centerSphere: [center, radiusInMeters / 6378137] // Earth's radius in meters
-          }
+      const radiusInMeters = Number(radius) * 1000;
+      query.location = {
+        $geoWithin: {
+          $centerSphere: [center, radiusInMeters / 6378137]
         }
-      }).populate('createdBy', 'name email').lean();
-    } else {
-      products = await Product.find().populate('createdBy', 'name email').lean();
+      };
     }
+    let productsQuery = Product.find(query);
+    if (populate === '1') {
+      productsQuery = productsQuery.populate('createdBy', 'name email');
+    }
+    const products = await productsQuery.lean();
     res.json(products);
   } catch (err) {
     res.status(500).json({ error: err.message });
