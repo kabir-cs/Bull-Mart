@@ -12,4 +12,7 @@ const productSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now }
 });
 
+productSchema.index({ location: '2dsphere' });
+productSchema.index({ createdBy: 1 });
+
 module.exports = mongoose.model('Product', productSchema); 
