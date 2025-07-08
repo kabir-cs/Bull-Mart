@@ -10,13 +10,18 @@ router.get('/', async (req, res) => {
     const { lat, lng, radius } = req.query;
     let products;
     if (lat && lng && radius) {
-      // Simple location filter (Haversine formula can be added for real geo queries)
+      // Use MongoDB geospatial query for efficient location search
+      const center = [Number(lng), Number(lat)];
+      const radiusInMeters = Number(radius) * 1000; // radius in km to meters
       products = await Product.find({
-        'location.lat': { $gte: Number(lat) - 0.1, $lte: Number(lat) + 0.1 },
-        'location.lng': { $gte: Number(lng) - 0.1, $lte: Number(lng) + 0.1 }
-      }).populate('createdBy', 'name email');
+        location: {
+          $geoWithin: {
+            $centerSphere: [center, radiusInMeters / 6378137] // Earth's radius in meters
+          }
+        }
+      }).populate('createdBy', 'name email').lean();
     } else {
-      products = await Product.find().populate('createdBy', 'name email');
+      products = await Product.find().populate('createdBy', 'name email').lean();
     }
     res.json(products);
   } catch (err) {
