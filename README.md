@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/University_of_South_Florida_Logo.svg" alt="USF Logo" width="180"/>
+</p>
+
 # Bull-Mart
 
 ---
