@@ -25,6 +25,7 @@ router.get('/', async (req, res) => {
     const products = await productsQuery.lean();
     res.json(products);
   } catch (err) {
+    console.error('Error in GET /api/products:', err);
     res.status(500).json({ error: err.message });
   }
 });
@@ -43,6 +44,7 @@ router.post('/', auth(['admin']), async (req, res) => {
     await product.save();
     res.status(201).json(product);
   } catch (err) {
+    console.error('Error in POST /api/products:', err);
     res.status(400).json({ error: err.message });
   }
 });
@@ -53,6 +55,7 @@ router.put('/:id', auth(['admin']), async (req, res) => {
     const product = await Product.findByIdAndUpdate(req.params.id, req.body, { new: true });
     res.json(product);
   } catch (err) {
+    console.error('Error in PUT /api/products/:id:', err);
     res.status(400).json({ error: err.message });
   }
 });
@@ -63,6 +66,7 @@ router.delete('/:id', auth(['admin']), async (req, res) => {
     await Product.findByIdAndDelete(req.params.id);
     res.json({ message: 'Product deleted' });
   } catch (err) {
+    console.error('Error in DELETE /api/products/:id:', err);
     res.status(400).json({ error: err.message });
   }
 });
