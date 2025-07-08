@@ -20,18 +20,18 @@
 
 ```mermaid
 flowchart TD
-  subgraph Frontend [React + Bootstrap]
+  subgraph Frontend
     F1[User Interface]
     F2[Google Maps Integration]
     F3[API Requests (Axios)]
   end
-  subgraph Backend [Node.js + Express]
+  subgraph Backend
     B1[REST API]
     B2[Authentication (JWT)]
     B3[Product & User Management]
     B4[Location Data]
   end
-  subgraph Database [MongoDB]
+  subgraph Database
     D1[(Users)]
     D2[(Products)]
   end
