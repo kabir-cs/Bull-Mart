@@ -12,6 +12,10 @@
 
 ---
 
+**Bull-Mart** is a modern, location-based marketplace platform. Discover, list, and manage products with seamless Google Maps integration and a responsive, intuitive UI.
+
+---
+
 ## 🏗️ Architecture Overview
 
 ```mermaid
@@ -45,19 +49,19 @@ flowchart TD
 
 ---
 
+## 🚀 Tech Stack
+
+- **Backend:** Node.js, Express, JWT, Mongoose
+- **Frontend:** React, Bootstrap, Google Maps API, Axios
+- **Database:** MongoDB
+
+---
+
 ## 🔗 API Flow
 
 1. **Frontend** sends requests to **Backend** via RESTful endpoints.
 2. **Backend** authenticates users, processes product/location data, and interacts with **MongoDB**.
 3. **Frontend** visualizes product locations using **Google Maps API**.
-
----
-
-## 🚀 Tech Stack
-
-- <img src="https://img.shields.io/badge/Node.js-Express-green?logo=node.js" /> **Backend:** Node.js, Express, JWT, Mongoose
-- <img src="https://img.shields.io/badge/React-Bootstrap-blue?logo=react" /> **Frontend:** React, Bootstrap, Google Maps API, Axios
-- <img src="https://img.shields.io/badge/MongoDB-Database-brightgreen?logo=mongodb" /> **Database:** MongoDB
 
 ---
 
