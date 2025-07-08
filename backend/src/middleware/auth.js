@@ -8,15 +8,16 @@ module.exports = (roles = []) => {
       return res.status(401).json({ error: 'No token provided' });
     }
     const token = authHeader.split(' ')[1];
+    let decoded;
     try {
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
-      req.user = decoded;
-      if (roles.length && !roles.includes(decoded.role)) {
-        return res.status(403).json({ error: 'Forbidden: insufficient role' });
-      }
-      next();
+      decoded = jwt.verify(token, process.env.JWT_SECRET);
     } catch (err) {
-      res.status(401).json({ error: 'Invalid token' });
+      return res.status(401).json({ error: 'Invalid token' });
     }
+    req.user = decoded;
+    if (roles.length > 0 && !roles.includes(decoded.role)) {
+      return res.status(403).json({ error: 'Forbidden: insufficient role' });
+    }
+    next();
   };
 }; 
