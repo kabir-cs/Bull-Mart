@@ -90,13 +90,6 @@ The arrow icon on GitHub and the inability to see the `frontend` directory in yo
    - The `frontend` directory will be populated with its files.
    - You’ll be able to see and open it in your file explorer, code editor, and the GitHub Desktop app.
 
----
-
-#### Why does GitHub show an arrow?
-- The arrow indicates that the folder is a submodule, not a regular directory.
-- You can click the folder on GitHub to see which repository and commit it points to, but you won’t see the files directly in the main repo’s file tree.
-
----
 
 #### Summary Table
 
