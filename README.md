@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://content.sportslogos.net/logos/34/837/full/south_florida_bulls_logo_secondary_20118899.png" alt="USF Logo" width="180"/>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/1/13/Official_USF_Bulls_Athletic_Logo.png" alt="USF Logo" width="180"/>
 </p>
 
 # Bull-Mart
