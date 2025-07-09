@@ -63,3 +63,44 @@ bull-mart/
 ## 📞 Contact
 
 For questions or contributions, open an issue or contact the maintainer. 
+
+### Why the frontend directory has an arrow and is not visible in the GitHub app
+
+The arrow icon on GitHub and the inability to see the `frontend` directory in your local file explorer or the GitHub Desktop app is because **`frontend` is a Git submodule**. Here’s what that means and how to resolve it:
+
+---
+
+#### What is a Git submodule?
+- A submodule is a reference to another Git repository inside your main repository.
+- On GitHub, submodules appear as a folder with an arrow and a commit hash, not as a regular directory.
+- Locally, if you haven’t initialized the submodule, the folder will be empty or missing.
+
+---
+
+#### How to make the frontend directory appear locally
+
+1. **Initialize and update submodules:**
+   Open your terminal in the project root and run:
+   ```sh
+   git submodule update --init --recursive
+   ```
+   This will download the actual contents of the `frontend` submodule.
+
+2. **After running the command:**
+   - The `frontend` directory will be populated with its files.
+   - You’ll be able to see and open it in your file explorer, code editor, and the GitHub Desktop app.
+
+---
+
+#### Why does GitHub show an arrow?
+- The arrow indicates that the folder is a submodule, not a regular directory.
+- You can click the folder on GitHub to see which repository and commit it points to, but you won’t see the files directly in the main repo’s file tree.
+
+---
+
+#### Summary Table
+
+| Where?                | What you see         | Why?                                 | How to fix locally?                |
+|-----------------------|---------------------|--------------------------------------|------------------------------------|
+| GitHub web            | Arrow + commit hash | It’s a submodule                     | N/A (can’t see files directly)     |
+| Local (before update 
